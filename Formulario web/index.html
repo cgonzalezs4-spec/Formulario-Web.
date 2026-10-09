@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Formulario web de registro e inicio de sesión con validaciones interactivas.">
+  <title>Accede a tu cuenta | Formulario web</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="page">
+    <section class="auth-card is-register" id="auth-card" aria-label="Acceso a tu cuenta">
+      <aside class="welcome-panel" aria-label="Bienvenida">
+        <div class="welcome-decoration decoration-one"></div>
+        <div class="welcome-decoration decoration-two"></div>
+        <div class="welcome-content" id="welcome-content">
+          <span class="welcome-tag">TU ESPACIO DIGITAL</span>
+          <span class="welcome-mark" aria-hidden="true">↗</span>
+            <h1 id="welcome-title">¡Bienvenido!</h1>
+            <p id="welcome-copy">¿Ya tienes una cuenta? Inicia sesión y continúa donde lo dejaste.</p>
+            <button class="switch-button" id="mode-switch" type="button">Iniciar sesión</button>
+        </div>
+        <div class="welcome-bottom" aria-hidden="true">
+          <span class="bottom-dot"></span>
+          <span>Simple. Seguro. Para ti.</span>
+        </div>
+      </aside>
+
+      <div class="form-panel">
+        <div class="form-content" id="form-content">
+          <div class="form-heading">
+            <span class="eyebrow" id="form-eyebrow">EMPIEZA ALGO NUEVO</span>
+            <h2 id="form-title">Crear una cuenta</h2>
+            <p id="form-description">Completa tus datos para unirte a nuestra comunidad.</p>
+          </div>
+
+          <form id="registration-form" novalidate>
+            <div class="fields-grid">
+              <div class="field" data-register-only>
+                <label for="name">Nombre completo <span aria-hidden="true">*</span></label>
+                <div class="input-wrap">
+                  <span class="input-icon" aria-hidden="true">♙</span>
+                  <input id="name" name="name" type="text" placeholder="Ej. Alex García" autocomplete="name" minlength="2" maxlength="60" required aria-describedby="name-error">
+                </div>
+                <span class="field-error" id="name-error"></span>
+              </div>
+
+              <div class="field">
+                <label for="email">Correo electrónico <span aria-hidden="true">*</span></label>
+                <div class="input-wrap">
+                  <span class="input-icon" aria-hidden="true">@</span>
+                  <input id="email" name="email" type="email" placeholder="nombre@ejemplo.com" autocomplete="email" required aria-describedby="email-error">
+                </div>
+                <span class="field-error" id="email-error"></span>
+              </div>
+
+              <div class="field">
+                <label for="password">Contraseña <span aria-hidden="true">*</span></label>
+                <div class="input-wrap">
+                  <span class="input-icon lock-icon" aria-hidden="true">▣</span>
+                  <input id="password" name="password" type="password" placeholder="Mínimo 8 caracteres" autocomplete="new-password" minlength="8" maxlength="64" required aria-describedby="password-hint password-error">
+                  <button class="password-toggle" id="password-toggle" type="button" aria-label="Mostrar contraseña" aria-pressed="false">Ver</button>
+                </div>
+                <div class="password-strength is-hidden" id="password-strength" aria-live="polite">
+                  <span class="strength-track"><span class="strength-fill" id="strength-fill"></span></span>
+                  <span id="strength-label"></span>
+                </div>
+                <span class="field-hint" id="password-hint" data-register-only>Usa al menos 8 caracteres.</span>
+                <span class="field-error" id="password-error"></span>
+              </div>
+
+              <div class="field" data-register-only>
+                <label for="age">Edad <span aria-hidden="true">*</span></label>
+                <div class="input-wrap">
+                  <span class="input-icon" aria-hidden="true">#</span>
+                  <input id="age" name="age" type="number" placeholder="Ej. 20" min="18" max="100" step="1" inputmode="numeric" required aria-describedby="age-error">
+                </div>
+                <span class="field-error" id="age-error"></span>
+              </div>
+
+              <div class="field" data-register-only>
+                <label for="phone">Teléfono <span aria-hidden="true">*</span></label>
+                <div class="input-wrap">
+                  <span class="input-icon" aria-hidden="true">⌕</span>
+                  <input id="phone" name="phone" type="tel" placeholder="Ej. 0991234567" autocomplete="tel" inputmode="tel" minlength="7" maxlength="24" required aria-describedby="phone-hint phone-error">
+                </div>
+                <span class="field-hint" id="phone-hint">Entre 7 y 15 dígitos; puedes usar +, espacios o guiones.</span>
+                <span class="field-error" id="phone-error"></span>
+              </div>
+
+              <div class="field" data-register-only>
+                <label for="country">País o región <span aria-hidden="true">*</span></label>
+                <div class="input-wrap">
+                  <span class="input-icon" aria-hidden="true">⌖</span>
+                  <select id="country" name="country" required aria-describedby="country-error">
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="ecuador">Ecuador</option>
+                    <option value="colombia">Colombia</option>
+                    <option value="peru">Perú</option>
+                    <option value="otro">Otro</option>
+                  </select>
+                </div>
+                <span class="field-error" id="country-error"></span>
+              </div>
+            </div>
+
+            <div class="form-options">
+              <label class="checkbox-field" for="terms" data-register-only>
+                <input id="terms" name="terms" type="checkbox" required aria-describedby="terms-error">
+                <span>Acepto los términos y condiciones <span aria-hidden="true">*</span></span>
+              </label>
+              <span class="field-error terms-error" id="terms-error" data-register-only></span>
+              <a class="forgot-link is-hidden" id="forgot-link" href="#password">¿Olvidaste tu contraseña?</a>
+            </div>
+
+            <button class="submit-button" id="submit-button" type="submit">Crear cuenta <span aria-hidden="true">→</span></button>
+            <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+          </form>
+          <p class="mobile-switch" id="mobile-switch-copy">¿Ya tienes una cuenta? <button type="button" data-switch-mode>Inicia sesión</button></p>
+        </div>
+      </div>
+    </section>
+    <p class="page-note">Formulario de demostración · Tus datos no se envían a ningún servidor</p>
+  </main>
+</body>
+</html>
